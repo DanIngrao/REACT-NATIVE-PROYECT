@@ -8,9 +8,9 @@ const Categories = ({setCategorySelected}) => {
     <View style={styles.container}>
       <FlatList 
         style={styles.container}
-        renderItem={({item})=> <CategoryItem category={item} setCategorySelected={setCategorySelected}/>} 
         data={categories} 
-        keyExtractor={category => category} 
+        keyExtractor={item => item} 
+        renderItem={({item})=> <CategoryItem category={item} setCategorySelected={setCategorySelected}/>} 
       />
     </View>
   )

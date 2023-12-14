@@ -4,6 +4,7 @@ import Header from '../Components/Header'
 import allProducts from '../Data/products.json'
 import Search from '../Components/Search'
 import ProductItem from '../Components/ProductItem'
+import { colors } from '../Global/colors'
 
 const ItemListCategories = ({category}) => {
   
@@ -12,7 +13,7 @@ const ItemListCategories = ({category}) => {
 
   useEffect(()=>{
     if(category){
-      const products = allProducts.filter(product => product.category === category)
+      const products = allProducts.filter(product => product.category == category)
       const productsFiltered = products.filter(product=>product.title.includes(keyword))
       setProducts(productsFiltered) 
     }else{
@@ -21,9 +22,9 @@ const ItemListCategories = ({category}) => {
   }},[category, keyword])
 
   return (
-    <>
-      <Search onSearch={setKeyword}/>
+    <View style={styles.container}>
       <Header tittle={category || 'Products'}/>
+      <Search onSearch={setKeyword}/>
       <View style={styles.container}>
         <FlatList
           data={products}
@@ -31,7 +32,7 @@ const ItemListCategories = ({category}) => {
           keyExtractor={item => item.id}
         />
       </View>
-    </>  
+    </View>  
   )
 }
 
@@ -39,7 +40,8 @@ export default ItemListCategories
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.cream,
     flex: 1,
-    width: '100%'
+    width: '100%',
   }
 })
