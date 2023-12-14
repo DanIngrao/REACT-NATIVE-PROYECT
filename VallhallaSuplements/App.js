@@ -1,11 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { colors } from './src/Global/colors';
+import { useState } from 'react';
+import ItemListCategories from './src/Screens/ItemListCategories';
+import Home from './src/Screens/Home';
 
 export default function App() {
+  
+  const [categorySelected, setCategorySelected] = useState("")
+
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {categorySelected ? <ItemListCategories category={categorySelected} setCategorySelected={setCategorySelected}/>
+      :
+      <Home setCategorySelected={setCategorySelected}/>}
     </View>
   );
 }
@@ -13,7 +22,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.cream,
     alignItems: 'center',
     justifyContent: 'center',
   },
