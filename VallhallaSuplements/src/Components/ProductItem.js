@@ -1,16 +1,23 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Card from './Card'
 
 const ProductItem = ({item, setProductDetailId}) => {
   return (
     <Pressable style={styles.card}>
-      <Text style={styles.text}>
-        {item.title}
-      </Text>
+      <Card>
+        <Text style={styles.text}>
+          {item.title}
+        </Text>
+      </Card>
+    
     </Pressable>
   )
 }
 
 export default ProductItem
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  card:{padding:10,marginHorizontal: 30,
+    marginVertical:10}, text:{fontSize:20}
+})

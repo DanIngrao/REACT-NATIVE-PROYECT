@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   text:{
-    fontSize: 30
+    fontSize: 30,
+    fontFamily: 'Josefin',
+    color:'white'
   }
 })

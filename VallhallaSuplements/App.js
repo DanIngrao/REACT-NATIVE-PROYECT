@@ -3,12 +3,17 @@ import { colors } from './src/Global/colors';
 import { useState } from 'react';
 import ItemListCategories from './src/Screens/ItemListCategories';
 import Home from './src/Screens/Home';
+import { useFonts } from 'expo-font';
+import { fonts } from './assets/Fonts/fonts';
 
 export default function App() {
   
   const [categorySelected, setCategorySelected] = useState("")
 
-  
+  const [fontsLoaded] = useFonts(fonts)
+
+  if(!fontsLoaded){return null}
+
   return (
     <View style={styles.container}>
       {categorySelected ? <ItemListCategories category={categorySelected} setCategorySelected={setCategorySelected}/>
