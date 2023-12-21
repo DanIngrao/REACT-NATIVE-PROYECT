@@ -5,10 +5,13 @@ import Card from './Card'
 const ProductItem = ({item, setProductDetailId}) => {
   return (
     <Pressable style={styles.card}>
-      <Card>
+      <Card>   
         <Text style={styles.text}>
           {item.title}
         </Text>
+        <Image
+         source={{uri:item.image}}
+        />
       </Card>
     
     </Pressable>

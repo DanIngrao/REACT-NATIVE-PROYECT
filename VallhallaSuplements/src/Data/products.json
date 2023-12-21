@@ -4,69 +4,69 @@
         "title": "Creatina ENA",
         "price": 2500,
         "category": "Creatina",
-        "image": "creaena.jpg"
+        "image": "../assets/creaena.jpg"
     },
     {
         "id":2,
         "title": "Creatina Gentech",
         "price": 2250,
         "category": "Creatina",
-        "image": "creagentech.jpg"
+        "image": "../assets/creagentech.jpg"
     },
     {
         "id": 3,
         "title": "Creatina Gold",
         "price": 2000,
         "category": "Creatina",
-        "image": "creagold.jpg"
+        "image": "../assets/creagold.jpg"
     },
     {
         "id": 4,
         "title": "Proteina ENA",
         "price": 1500,
         "category": "Proteina",
-        "image": "proteena.jpg"
+        "image": "../assets/proteena.jpg"
     },
     {
         "id":5,
         "title": "Proteina Gentech",
         "price": 1250,
         "category": "Proteina",
-        "image": "protegentech.jpg"
+        "image": "../assets/protegentech.jpg"
     },
     {
         "id": 6,
         "title": "Proteina Gold",
         "price": 1000,
         "category": "Proteina",
-        "image": "protegold.jpg"
+        "image": "../assets/protegold.jpg"
     },
     {
         "id": 7,
         "title": "Aminoacidos ENA",
         "price":3500,
         "category": "Aminoacidos",
-        "image": "aminoena.jpg"
+        "image": "../assets/aminoena.jpg"
     },
     {
         "id": 8,
         "title": "Aminoacidos Gentech",
         "price": 3250,
         "category": "Aminoacidos",
-        "image": "aminogentech.jpg"
+        "image": "../assets/aminogentech.jpg"
     },
     {
         "id": 9,
         "title": "Aminoacidos Gold",
         "price": 3000,
         "category": "Aminoacidos",
-        "image": "aminogold.jpg"
+        "image": "../assets/aminogold.jpg"
     },
     {
         "id": 10,
         "title": "Ostarine",
         "price": 8000,
         "category": "SARMS",
-        "image": "OSTARINE.jpg"
+        "image": "../assets/OSTARINE.jpg"
     }
 ]
