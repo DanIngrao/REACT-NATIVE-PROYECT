@@ -3,14 +3,14 @@ import React from 'react'
 import CategoryItem from './CategoryItem'
 import categories from '../Data/categories.json'
 
-const Categories = ({setCategorySelected}) => {
+const Categories = ({navigation}) => {
   return (
     <View style={styles.container}>
       <FlatList 
         style={styles.container}
-        data={categories} 
+        data={categories}
         keyExtractor={item => item} 
-        renderItem={({item})=> <CategoryItem category={item} setCategorySelected={setCategorySelected}/>} 
+        renderItem={({item})=> <CategoryItem category={item} navigation={navigation}/>} 
       />
     </View>
   )

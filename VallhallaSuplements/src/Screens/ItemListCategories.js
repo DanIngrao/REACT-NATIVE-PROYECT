@@ -6,10 +6,12 @@ import Search from '../Components/Search'
 import ProductItem from '../Components/ProductItem'
 import { colors } from '../Global/colors'
 
-const ItemListCategories = ({category}) => {
+const ItemListCategories = ({navigation, route}) => {
   
   const [products, setProducts] = useState([])
   const [keyword, setKeyword] = useState("")
+
+  const {category} = route.params
 
   useEffect(()=>{
     if(category){
@@ -23,12 +25,11 @@ const ItemListCategories = ({category}) => {
 
   return (
     <View style={styles.container}>
-      <Header tittle={category || 'Products'}/>
       <Search onSearch={setKeyword}/>
       <View style={styles.container}>
         <FlatList
           data={products}
-          renderItem={({item})=><ProductItem item={item}/>}
+          renderItem={({item})=><ProductItem item={item} navigation={navigation} route={route}/>}
           keyExtractor={item => item.id}
         />
       </View>

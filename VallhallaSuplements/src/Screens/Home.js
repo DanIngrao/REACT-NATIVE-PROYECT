@@ -4,11 +4,10 @@ import Header from '../Components/Header'
 import Categories from '../Components/Categories'
 import { colors } from '../Global/colors'
 
-const Home = ({setCategorySelected}) => {
+const Home = ({navigation, route}) => {
   return (
     <View style={styles.container}>
-      <Header title='Categories'/>
-      <Categories setCategorySelected={setCategorySelected}/>
+      <Categories navigation={navigation} route={route}/>
     </View>
   )
 }
