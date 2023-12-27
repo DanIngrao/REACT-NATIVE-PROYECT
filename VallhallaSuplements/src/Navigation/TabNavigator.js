@@ -2,11 +2,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import { NavigationContainer } from '@react-navigation/native';
-import CartNavigator from './CartNavigator';
 import { colors } from '../Global/colors';
+import CartStack from './CartStack';
 
 
-const Stack = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
@@ -15,11 +15,47 @@ const TabNavigator = () => {
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarStyle: StyleSheet.tabBar
+                tabBarStyle: styles.tabBar
             }}
         >
-            <Tab.Screen name='ShopTab' component={ShopNavigator}/>
-            <Tab.Screen name='CartTab' component={CartNavigator}/>
+            <Tab.Screen 
+                name='ShopTab' 
+                component={ShopNavigator}
+                options={{
+                    tabBarIcon: ({focused}) => {
+                        <View>
+                            <MaterialCommunityIcons
+                                name='shopping-outline'
+                                size={40}
+                                color={
+                                    focused
+                                        ? colors.blue1
+                                        : colors.grey
+                                }
+                            />
+                        </View>
+                    }
+                }}
+            />
+            <Tab.Screen 
+                name='CartTab' 
+                component={CartStack} 
+                options={{
+                    tabBarIcon: ({focused}) => {
+                        <View>
+                            <MaterialCommunityIcons
+                                name='Cart-outline'
+                                size={40}
+                                color={
+                                    focused
+                                        ? colors.blue1
+                                        : colors.grey
+                                }
+                            />
+                        </View>
+                    }
+                }}
+            />
         </Tab.Navigator>
     </NavigationContainer>
   )

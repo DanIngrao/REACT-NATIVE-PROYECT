@@ -7,7 +7,7 @@ import Cart from '../Screens/Cart'
 
 const Stack = createNativeStackNavigator();
 
-const CartNavigator = () => {
+const CartStack = () => {
   return (
     <Stack.Navigator
         initialRouteName='Cart'
@@ -20,4 +20,4 @@ const CartNavigator = () => {
   )
 }
 
-export default CartNavigator
+export default CartStack
