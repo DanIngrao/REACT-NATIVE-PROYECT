@@ -1,9 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { colors } from './src/Global/colors';
-import { useState } from 'react';
 import { useFonts } from 'expo-font';
 import { fonts } from './assets/Fonts/fonts';
-import Navigator from './src/Navigation/Navigator';
+import TabNavigator from './src/Navigation/TabNavigator';
 
 export default function App() {
 
@@ -12,7 +11,9 @@ export default function App() {
   if(!fontsLoaded){return null}
 
   return (
-    <Navigator/>
+    <>
+      <TabNavigator/>
+    </>
   );
 }
 

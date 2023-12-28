@@ -4,6 +4,8 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import { NavigationContainer } from '@react-navigation/native';
 import { colors } from '../Global/colors';
 import CartStack from './CartStack';
+import ShopStack from './ShopStack';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const Tab = createBottomTabNavigator();
@@ -20,7 +22,7 @@ const TabNavigator = () => {
         >
             <Tab.Screen 
                 name='ShopTab' 
-                component={ShopNavigator}
+                component={ShopStack}
                 options={{
                     tabBarIcon: ({focused}) => {
                         <View>
@@ -29,7 +31,7 @@ const TabNavigator = () => {
                                 size={40}
                                 color={
                                     focused
-                                        ? colors.blue1
+                                        ? colors.cream
                                         : colors.grey
                                 }
                             />
@@ -48,7 +50,7 @@ const TabNavigator = () => {
                                 size={40}
                                 color={
                                     focused
-                                        ? colors.blue1
+                                        ? colors.cream
                                         : colors.grey
                                 }
                             />
