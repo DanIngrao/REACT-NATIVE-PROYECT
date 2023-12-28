@@ -1,14 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import { NavigationContainer } from '@react-navigation/native';
 import { colors } from '../Global/colors';
 import CartStack from './CartStack';
 import ShopStack from './ShopStack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
@@ -46,7 +45,7 @@ const TabNavigator = () => {
                     tabBarIcon: ({focused}) => {
                         <View>
                             <MaterialCommunityIcons
-                                name='Cart-outline'
+                                name='home'
                                 size={40}
                                 color={
                                     focused
