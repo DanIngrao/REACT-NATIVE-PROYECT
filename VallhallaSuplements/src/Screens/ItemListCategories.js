@@ -4,22 +4,26 @@ import Search from '../Components/Search'
 import ProductItem from '../Components/ProductItem'
 import { colors } from '../Global/colors'
 import { useSelector } from 'react-redux'
+import { useGetProductsByCategoryQuery } from '../Services/shopService'
 
 const ItemListCategories = ({navigation}) => {
   
-  const productFilteredByCategory = useSelector(state => state.shopReducer.value.productsFilteredByCategory)
+  //const productFilteredByCategory = useSelector(state => state.shopReducer.value.productsFilteredByCategory)
+  
+  const {category} = route.params
+  const {productsFilteredByCategory, isLoading, error} = useGetProductsByCategoryQuery(category);
   const [products, setProducts] = useState([])
   const [keyword, setKeyword] = useState("")
 
   useEffect(()=>{
     
-    const productsFiltered= productFilteredByCategory.filter((product)=>
+    const productsFiltered= productsFilteredByCategory.filter((product)=>
       product.title.includes(keyword)
     );
 
     setProducts(productsFiltered)
 
-  },[productFilteredByCategory, keyword])
+  },[productsFilteredByCategory, keyword])
 
   return (
     <View style={styles.container}>

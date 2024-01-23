@@ -1,0 +1,1 @@
+export const base_url = "https://vallhalla-suplements-default-rtdb.firebaseio.com/"
