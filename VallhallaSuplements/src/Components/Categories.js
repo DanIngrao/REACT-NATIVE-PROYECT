@@ -9,13 +9,13 @@ const Categories = ({navigation}) => {
   
   //const categories = useSelector(state => state.shopReducer.value.categories)
   
-  const {data, isLoading, error} = useGetCategoriesQuery()
+  const {data:categories, isLoading, error} = useGetCategoriesQuery()
 
   return (
     <View style={styles.container}>
       <FlatList 
         style={styles.container}
-        data={data}
+        data={categories}
         keyExtractor={item => item} 
         renderItem={({item})=> <CategoryItem category={item} navigation={navigation}/>} 
       />

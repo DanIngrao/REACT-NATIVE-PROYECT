@@ -3,8 +3,6 @@ import React from 'react'
 import Card from './Card'
 
 const ProductItem = ({item, navigation, route}) => {
-  
-  console.log(item.image)
 
   return (
     <Pressable style={styles.card} onPress={()=>navigation.navigate("Detail",{id:item.id})}>

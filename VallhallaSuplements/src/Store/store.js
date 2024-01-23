@@ -5,7 +5,7 @@ import { shopApi } from '../Services/shopService'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 
-export default store = configureStore({
+const store = configureStore({
     reducer: {
         counterReducer,
         shopReducer,
@@ -15,3 +15,5 @@ export default store = configureStore({
 })
 
 setupListeners(store.dispatch)
+
+export default store;

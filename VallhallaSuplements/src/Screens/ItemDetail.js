@@ -1,6 +1,7 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import allProduct from "../Data/products.json"
+import { colors } from '../Global/colors'
 
 const ItemDetail = ({route}) => {
 
@@ -16,8 +17,11 @@ const ItemDetail = ({route}) => {
   },[id])
 
   return (
-    <View>
+    <View style={styles.container}>
       <View>
+          <Image
+            source={{uri: product.image}}
+          />
           <View>
             <Text>{product.title}</Text>
           </View>
@@ -34,4 +38,14 @@ const ItemDetail = ({route}) => {
 
 export default ItemDetail
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.cream,
+    flex: 1,
+    width: '100%',
+  },
+  image:{
+    width:"100%",
+    height:300
+  }
+})
