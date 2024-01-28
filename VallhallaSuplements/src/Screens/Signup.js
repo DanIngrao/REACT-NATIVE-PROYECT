@@ -4,13 +4,16 @@ import { colors } from '../Global/colors'
 import SubmitButton from '../Components/SubmitButton'
 import { useState } from 'react'
 import { useSignupMutation } from '../Services/authService'
+import { useDispatch } from 'react-redux'
 
 
 const Signup = ({navigation}) => {
 
+    const dispatch = useDispatch()
+
     const [email, setEmail] = useState("")
     const [password,setPassword] = useState("")
-    const [triggerSignup, result] = useSignupMutation();
+    const [triggerSignup,{data,isError,isSuccess,isLoading}] = useSignupMutation();
     
     const onSubmit = () => {
         triggerSignup({
@@ -25,12 +28,12 @@ const Signup = ({navigation}) => {
                 <Text style={styles.title}>Login to start</Text>        
                 <InputForm
                     label={"email"}
-                    onChange={()=>{}}
+                    onChange={(t)=>{setEmail(t)}}
                     error={""}
                 />
                 <InputForm
                     label={"password"}
-                    onChange={()=>{}}
+                    onChange={(t)=>{setPassword(t)}}
                     error={""}
                     isSecure={true}
                 />
