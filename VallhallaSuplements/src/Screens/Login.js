@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from '../Global/colors'
 import InputForm from '../Components/InputForm'
+import SubmitButton from '../Components/SubmitButton'
 
 const Login = ({navigation}) => {
   
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent:'center',
         alignItems: 'center',
-        backgroundColor: colors.blue1,
+        backgroundColor: colors.blue2,
         gap: 15,
         paddingVertical: 20,
         borderRadius: 10
