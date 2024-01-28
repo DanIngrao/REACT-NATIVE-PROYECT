@@ -11,54 +11,52 @@ const Tab = createMaterialBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <NavigationContainer>
-        <Tab.Navigator
-            screenOptions={{
-                headerShown: false,
-                tabBarShowLabel: false,
-                tabBarStyle: styles.tabBar
+    <Tab.Navigator
+        screenOptions={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarStyle: styles.tabBar
+        }}
+    >
+        <Tab.Screen 
+            name='ShopTab' 
+            component={ShopStack}
+            options={{
+                tabBarIcon: ({focused}) => {
+                    <View>
+                        <MaterialCommunityIcons
+                            name='shopping-outline'
+                            size={40}
+                            color={
+                                focused
+                                    ? colors.cream
+                                    : colors.grey
+                            }
+                        />
+                    </View>
+                }
             }}
-        >
-            <Tab.Screen 
-                name='ShopTab' 
-                component={ShopStack}
-                options={{
-                    tabBarIcon: ({focused}) => {
-                        <View>
-                            <MaterialCommunityIcons
-                                name='shopping-outline'
-                                size={40}
-                                color={
-                                    focused
-                                        ? colors.cream
-                                        : colors.grey
-                                }
-                            />
-                        </View>
-                    }
-                }}
-            />
-            <Tab.Screen 
-                name='CartTab' 
-                component={CartStack} 
-                options={{
-                    tabBarIcon: ({focused}) => {
-                        <View>
-                            <MaterialCommunityIcons
-                                name='home'
-                                size={40}
-                                color={
-                                    focused
-                                        ? colors.cream
-                                        : colors.grey
-                                }
-                            />
-                        </View>
-                    }
-                }}
-            />
-        </Tab.Navigator>
-    </NavigationContainer>
+        />
+        <Tab.Screen 
+            name='CartTab' 
+            component={CartStack} 
+            options={{
+                tabBarIcon: ({focused}) => {
+                    <View>
+                        <MaterialCommunityIcons
+                            name='home'
+                            size={40}
+                            color={
+                                focused
+                                    ? colors.cream
+                                    : colors.grey
+                            }
+                        />
+                    </View>
+                }
+            }}
+        />
+    </Tab.Navigator>
   )
 }
 
