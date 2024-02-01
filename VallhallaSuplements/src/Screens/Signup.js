@@ -91,14 +91,15 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'100%',
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
+        backgroundColor: colors.cream
     },
     container:{
         width: '90%',
         flexDirection: 'column',
         justifyContent:'center',
         alignItems: 'center',
-        backgroundColor: colors.blue2,
+        backgroundColor: colors.grey,
         gap: 15,
         paddingVertical: 20,
         borderRadius: 10

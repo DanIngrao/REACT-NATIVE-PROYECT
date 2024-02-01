@@ -3,7 +3,7 @@ import React from 'react'
 import { colors } from '../Global/colors';
 import CartStack from './CartStack';
 import ShopStack from './ShopStack';
-import TabIcon from '../Components/TabIcon';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import OrdersStack from './OrdersStack';
 
@@ -14,29 +14,40 @@ const TabNavigator = () => {
     <Tab.Navigator
         screenOptions={{
             headerShown: false,
-            tabBarShowLabel: false,
-            tabBarStyle: styles.tabBar
+            tabBarShowLabel: false
         }}
+        activeColor="#e91e63"
+        labelStyle={{ fontSize: 12 }}
+        barStyle={{ backgroundColor: colors.blue1 }}
     >
         <Tab.Screen 
             name='ShopTab' 
             component={ShopStack}
             options={{
-                tabBarIcon:({focused}) => <TabIcon icon="shop" label={"Productos"} focused={focused}/>
+                tabBarLabel: 'Productos',
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="home" color={color} size={26} />
+                )
             }}
         />
         <Tab.Screen 
             name='CartTab' 
             component={CartStack} 
             options={{
-                tabBarIcon:({focused}) =>  <TabIcon icon="shopping-cart" label={"Carrito"} focused={focused}/>
+                tabBarLabel: 'Carrito',
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="cart" color={color} size={26} />
+                )
             }}
         />
         <Tab.Screen 
             name="OrdersStack" 
             component={OrdersStack}
             options={{
-              tabBarIcon:({focused}) => <TabIcon icon="list" label="Ordenes" focused={focused}/> 
+                tabBarLabel: 'Ordenes',
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="list" color={color} size={26} />
+                ) 
              }}
         />
     </Tab.Navigator>
@@ -44,17 +55,3 @@ const TabNavigator = () => {
 }
 
 export default TabNavigator
-
-const styles = StyleSheet.create({
-    tabBar: {
-        backgroundColor: colors.blue1,
-        shadowColor: 'black',
-        elevation: 4,
-        position: 'absolute',
-        bottom: 25,
-        left: 20,
-        right: 20,
-        borderRadius: 15,
-        height: 90
-    }
-})

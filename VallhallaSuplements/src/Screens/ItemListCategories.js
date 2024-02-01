@@ -8,8 +8,6 @@ import { useGetProductsByCategoryQuery } from '../Services/shopService'
 
 const ItemListCategories = ({navigation, route}) => {
   
-  //const productFilteredByCategory = useSelector(state => state.shopReducer.value.productsFilteredByCategory)
-  
   const {category} = route.params
   const {data, isLoading, error} = useGetProductsByCategoryQuery(category);
   const [products, setProducts] = useState([])

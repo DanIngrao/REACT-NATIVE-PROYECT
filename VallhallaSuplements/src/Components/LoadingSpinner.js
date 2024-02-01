@@ -4,8 +4,8 @@ import { colors } from '../Global/colors'
 
 const LoadingSpinner = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:colors.blue2 }}>
-      <ActivityIndicator size={80} color="white" />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:colors.cream }}>
+      <ActivityIndicator size={80} color="red" />
     </View>
   )
 }

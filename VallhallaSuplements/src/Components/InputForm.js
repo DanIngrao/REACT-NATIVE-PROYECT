@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         justifyContent:"flex-start",
         alignItems:'center',
-        width:'100%'
+        width:'100%',
     },
     subtitle:{
         width:'90%',
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
         width: '90%',
         borderWidth: 0,
         borderBottomWidth:3,
-        borderBottomColor: colors.grey,
+        borderBottomColor: 'black',
         padding: 2,
         fontFamily: 'Josefin',
-        fontSize: 14
+        fontSize: 14,
     }
 })
