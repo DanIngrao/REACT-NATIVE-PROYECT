@@ -1,55 +1,82 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import InputForm from '../Components/InputForm'
 import { colors } from '../Global/colors'
+import InputForm from '../Components/InputForm'
 import SubmitButton from '../Components/SubmitButton'
-import { useState } from 'react'
-import { useSignupMutation } from '../Services/authService'
+import { useEffect, useState } from 'react'
+import { useSignUpMutation } from '../Services/authService'
+import { signupSchema } from '../Validations/signupShema'
 import { useDispatch } from 'react-redux'
+import { setUser } from '../Features/Auth/authSlice'
 
 
 const Signup = ({navigation}) => {
 
     const dispatch = useDispatch()
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+    const [confirmPassword,setConfirmPassword]=useState("")
+    const [triggerSignup,{data,isError,isSuccess,isLoading}]=useSignUpMutation()
 
-    const [email, setEmail] = useState("")
-    const [password,setPassword] = useState("")
-    const [triggerSignup,{data,isError,isSuccess,isLoading}] = useSignupMutation();
-    
-    const onSubmit = () => {
-        triggerSignup({
-            email,
-            password
-        })
+    const [errorMail,setErrorMail]=useState("")
+    const [errorPassword,setErrorPassword]=useState("")
+    const [errorConfirmPassword,setErrorConfirmPassword]=useState("")
+
+    useEffect(()=>{
+        if(isSuccess) {dispatch(setUser(data))}
+    },[data,isError,isSuccess])
+
+    const onSubmit = ()=>{
+        try{
+            signupSchema.validateSync({email,password,confirmPassword})
+            triggerSignup({
+                email,
+                password
+            })
+        }catch(err){
+            switch(err.path){
+                case 'email':
+                    setErrorMail(err.message)
+                    break;
+                case 'password':
+                    setErrorPassword(err.message)
+                    break;
+                case 'confirmPassword':
+                    setErrorConfirmPassword(err.message)
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     return (
         <View style={styles.main}>
             <View style={styles.container}>
-                <Text style={styles.title}>Login to start</Text>        
+                <Text style={styles.title}>Registrese para empezar</Text>        
                 <InputForm
                     label={"email"}
                     onChange={(t)=>{setEmail(t)}}
-                    error={""}
+                    error={errorMail}
                 />
                 <InputForm
-                    label={"password"}
+                    label={"contraseña"}
                     onChange={(t)=>{setPassword(t)}}
-                    error={""}
+                    error={errorPassword}
                     isSecure={true}
                 />
                 <InputForm
-                    label={"confirm password"}
-                    onChange={()=>{}}
-                    error={""}
+                    label={"confirmar contraseña"}
+                    onChange={(t)=>{setConfirmPassword(t)}}
+                    error={errorConfirmPassword}
                     isSecure={true}
                 />
                 <SubmitButton
                     onPress={onSubmit}
-                    title= "Send"
+                    title= "Enviar"
                 />
-                <Text style={styles.sub}>Already have an account?</Text>
+                <Text style={styles.sub}>Ya tiene cuenta?</Text>
                 <Pressable onPress={()=>navigation.navigate('Login')}>
-                    <Text style={styles.subLink}>Login</Text>
+                    <Text style={styles.subLink}>Ingresar</Text>
                 </Pressable>
             </View>
         </View>   
@@ -78,7 +105,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontSize: 22,
-        fontFamily: 'Lobster',
+        fontFamily: 'Josefin',
     },
     sub:{
         fontSize: 14,

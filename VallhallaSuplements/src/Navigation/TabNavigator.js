@@ -1,11 +1,10 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
 import { colors } from '../Global/colors';
 import CartStack from './CartStack';
 import ShopStack from './ShopStack';
+import TabIcon from '../Components/TabIcon';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -22,38 +21,14 @@ const TabNavigator = () => {
             name='ShopTab' 
             component={ShopStack}
             options={{
-                tabBarIcon: ({focused}) => {
-                    <View>
-                        <MaterialCommunityIcons
-                            name='shopping-outline'
-                            size={40}
-                            color={
-                                focused
-                                    ? colors.cream
-                                    : colors.grey
-                            }
-                        />
-                    </View>
-                }
+                tabBarIcon:({focused}) => <TabIcon icon="shop" label={"Productos"} focused={focused}/>
             }}
         />
         <Tab.Screen 
             name='CartTab' 
             component={CartStack} 
             options={{
-                tabBarIcon: ({focused}) => {
-                    <View>
-                        <MaterialCommunityIcons
-                            name='home'
-                            size={40}
-                            color={
-                                focused
-                                    ? colors.cream
-                                    : colors.grey
-                            }
-                        />
-                    </View>
-                }
+                tabBarIcon:({focused}) =>  <TabIcon icon="shopping-cart" label={"Carrito"} focused={focused}/>
             }}
         />
     </Tab.Navigator>
@@ -64,7 +39,7 @@ export default TabNavigator
 
 const styles = StyleSheet.create({
     tabBar: {
-        backgroundColor: colors.blue2,
+        backgroundColor: colors.blue1,
         shadowColor: 'black',
         elevation: 4,
         position: 'absolute',

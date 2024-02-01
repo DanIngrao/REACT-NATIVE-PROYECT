@@ -2,8 +2,14 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import allProduct from "../Data/products.json"
 import { colors } from '../Global/colors'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../Features/Cart/cartSlice'
 
 const ItemDetail = ({route}) => {
+
+  const dispatch = useDispatch()
+
+  const onAddCart = ()=>{dispatch(addItem({...product, quantity: 1}))}
 
   const {id} = route.params
 
@@ -27,8 +33,8 @@ const ItemDetail = ({route}) => {
           </View>
           <View>
             <Text>$ {product.price}</Text>
-            <Pressable>
-              <Text>Buy Now</Text>
+            <Pressable onPress={onAddCart}>
+              <Text>Agregar al carrito</Text>
             </Pressable>
           </View>
         </View>

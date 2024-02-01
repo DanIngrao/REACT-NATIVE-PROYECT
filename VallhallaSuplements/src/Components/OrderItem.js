@@ -1,26 +1,27 @@
 import { StyleSheet, Text, View } from 'react-native'
-import {Entypo} from "@expo/vector-icons"
+import {Feather} from "@expo/vector-icons"
 import { colors } from '../Global/colors'
 
-const CartItem = ({item}) => {
+const OrderItem = ({order}) => {
+    const total = order.items
+        .reduce((acc,product)=> acc + (product.price * product.quantity),0)
+
   return (
     <View style={styles.container}>
-        <View style={styles.textContainer}>
-            <Text style={styles.text1}>{item.title}</Text>
-            <Text  style={styles.text2}>{item.category}</Text>
-            <Text  style={styles.text2}>Cantidad: {item.quantity} Precio $ {item.price}</Text>
-        </View>
-        <Entypo name='trash' size={25} color="black"/>
+      <View style={styles.textContainer}>
+            <Text style={styles.text1}>{new Date(order.createdAt).toLocaleString()}</Text>
+            <Text style={styles.text2}>Total: ${total}</Text>
+      </View>
+      <Feather name="search" size={25} color="black"/>
     </View>
-
   )
 }
 
-export default CartItem
+export default OrderItem;
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:colors.green3,
+        backgroundColor:colors.grey,
         margin:10,
         padding:10,
         height:100,
@@ -36,13 +37,11 @@ const styles = StyleSheet.create({
     },
     text1:{
         fontSize:19,
-        color:colors.lightGray,
+        fontWeight:"bold",
         fontFamily:"Josefin"
     },
     text2:{
         fontSize:17,
-        color:colors.lightGray,
         fontFamily:"Josefin"
     }
-
 })

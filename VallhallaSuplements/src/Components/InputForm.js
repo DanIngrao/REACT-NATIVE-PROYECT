@@ -9,13 +9,15 @@ const InputForm = ({
     isSecure=false
 }) => {
 
-    const [input,setInput]=useState("")
+    const [input,setInput]= useState("")
+    
     const onChangeText = (text) => {
         setInput(text)
         onChange(text)
     }
 
   return (
+    
     <View style={styles.inputContainer}>
         <Text style={styles.subtitle}>{label}</Text>
         <TextInput
@@ -24,6 +26,7 @@ const InputForm = ({
             onChangeText={onChangeText}
             secureTextEntry={isSecure}
         />
+        
         {
             error ?
             <Text style={styles.error}>
