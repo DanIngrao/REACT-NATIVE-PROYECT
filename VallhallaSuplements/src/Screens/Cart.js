@@ -2,6 +2,7 @@ import { StyleSheet, Text, View,FlatList, Pressable } from 'react-native'
 import CartItem from '../Components/CartItem'
 import { useSelector } from 'react-redux'
 import { usePostOrdersMutation } from '../Services/shopService'
+import { colors } from '../Global/colors'
 
 const Cart = () => {
 
@@ -36,7 +37,8 @@ export default Cart
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        marginBottom:130
+        marginBottom:130,
+        backgroundColor:colors.cream
     },
     confirmContainer:{
         backgroundColor:"grey",

@@ -8,7 +8,7 @@ const CartItem = ({item}) => {
     
     const dispatch = useDispatch()
 
-    const deleteCartItem = ()=>{dispatch(removeItem(item))}
+    const deleteCartItem = ()=>{dispatch(removeItem({item}))}
 
     return (
         <View style={styles.container}>

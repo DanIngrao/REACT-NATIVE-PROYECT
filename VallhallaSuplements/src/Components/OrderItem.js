@@ -3,8 +3,6 @@ import {Feather} from "@expo/vector-icons"
 import { colors } from '../Global/colors'
 
 const OrderItem = ({order}) => {
-    const total = order.items
-        .reduce((acc,product)=> acc + (product.price * product.quantity),0)
 
   return (
     <View style={styles.container}>

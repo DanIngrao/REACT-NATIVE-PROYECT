@@ -20,8 +20,17 @@ export const shopApi = createApi({
               method:"POST",
               body:order
             })
-        })
+        }),
+        getOrders: builder.query({
+            query: (localId) => `orders/${localId}.json`,
+            transformResponse:(response) => {
+             if(!response) return []
+             const data = Object.keys(response).map(key =>({id:key,...response[key]}))
+             return data
+            },
+            providesTags:["order"]
+          }),
     })
 })
 
-export const { useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery, usePostOrdersMutation } = shopApi;
+export const { useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery, usePostOrdersMutation, useGetOrdersQuery } = shopApi;

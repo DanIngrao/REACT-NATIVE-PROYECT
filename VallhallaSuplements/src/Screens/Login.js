@@ -75,16 +75,17 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 22,
         fontFamily: 'Josefin',
+        color: 'white'
     },
     sub:{
         fontSize: 14,
         fontFamily: 'Josefin',
-        color: 'black'
+        color: 'white'
     },
     subLink:{
         fontSize: 14,
         fontFamily: 'Josefin',
-        color: 'blue'
+        color: 'red'
     }
     
 })
