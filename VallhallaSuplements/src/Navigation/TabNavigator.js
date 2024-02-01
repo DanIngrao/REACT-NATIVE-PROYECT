@@ -5,6 +5,7 @@ import CartStack from './CartStack';
 import ShopStack from './ShopStack';
 import TabIcon from '../Components/TabIcon';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import OrdersStack from './OrdersStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -30,6 +31,13 @@ const TabNavigator = () => {
             options={{
                 tabBarIcon:({focused}) =>  <TabIcon icon="shopping-cart" label={"Carrito"} focused={focused}/>
             }}
+        />
+        <Tab.Screen 
+            name="OrdersStack" 
+            component={OrdersStack}
+            options={{
+              tabBarIcon:({focused}) => <TabIcon icon="list" label="Ordenes" focused={focused}/> 
+             }}
         />
     </Tab.Navigator>
   )

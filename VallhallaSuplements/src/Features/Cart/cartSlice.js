@@ -12,7 +12,6 @@ export const cartSlice = createSlice({
     },
     reducers:{
         addItem:(state,action) => {
-            debugger;
             const productRepeated = state.value.items.find(
                 (item) => item.id === action.payload.id
             );
@@ -45,7 +44,13 @@ export const cartSlice = createSlice({
             }
         },
         removeItem: (state,action) => {
-
+            state.value.items.push(action.payload);
+            const total = state.value.items.reduce((acc,item)=>(acc-= item.price*item.quantity),0)
+                state.value = {
+                    ...state.value,
+                    total,
+                    updatedAt: new Date().toLocaleString()
+                }
         }
     }
 })
