@@ -19,7 +19,8 @@ export const authSlice = createSlice({
     },
     clearUser: (state) => {
         state.value = {user: null, idToken: null, localId: null}
-    }
+    },
+    
   },
 })
 

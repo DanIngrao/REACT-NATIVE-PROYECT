@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native'
 import React from 'react'
 import { colors } from '../Global/colors';
 import CartStack from './CartStack';
@@ -6,6 +5,7 @@ import ShopStack from './ShopStack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import OrdersStack from './OrdersStack';
+import MyProfileStack from './MyProfileStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -49,6 +49,16 @@ const TabNavigator = () => {
                     <MaterialCommunityIcons name="list" color={color} size={26} />
                 ) 
              }}
+        />
+        <Tab.Screen 
+              name="MyProfileStack" 
+              component={MyProfileStack}
+              options={{
+                tabBarLabel: 'Perfil',
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="profile" color={color} size={26} />
+                ) 
+              }}
         />
     </Tab.Navigator>
   )
