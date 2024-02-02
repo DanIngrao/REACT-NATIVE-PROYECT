@@ -46,7 +46,7 @@ const TabNavigator = () => {
             options={{
                 tabBarLabel: 'Ordenes',
                 tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="list" color={color} size={26} />
+                    <MaterialCommunityIcons name="bell" color={color} size={26} />
                 ) 
              }}
         />
@@ -56,7 +56,7 @@ const TabNavigator = () => {
               options={{
                 tabBarLabel: 'Perfil',
                 tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="profile" color={color} size={26} />
+                    <MaterialCommunityIcons name="account" color={color} size={26} />
                 ) 
               }}
         />
