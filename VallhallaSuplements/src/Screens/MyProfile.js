@@ -17,20 +17,16 @@ const MyProfile = ({navigation}) => {
     }
 
   return (
-    <View>
-
-        <View style={styles.container}>
-            <Image
-                source={data ? {uri:data.image} : require("../../assets/Images/user.png")}
-                style={styles.image}
-                resizeMode='cover'
-                />
-            <Text>{location?.address}</Text>
-            <AddButton title={"Agregar foto"} onPress={()=> navigation.navigate("ImageSelector")}/>
-        </View>
+    
+    <View style={styles.container}>
+        <Image
+            source={data ? {uri:data.image} : require("../../assets/Images/user.png")}
+            style={styles.image}
+            resizeMode='cover'
+            />
+        <AddButton title={"Agregar foto"} onPress={()=> navigation.navigate("ImageSelector")}/>
         <Pressable style={styles.logoutButton} onPress={onLogout}>
-            <MaterialIcons name='logout' size={30}/>
-            <Text>Logout</Text>
+            <Text style={styles.text}>Cerrar sesion</Text>
         </Pressable>
     </View>
   )
@@ -51,9 +47,15 @@ const styles = StyleSheet.create({
         height:200
     },
     logoutButton:{
+        flexDirection:'row',
         backgroundColor: 'red',
         width:"70%",
-        paddingVertical:8,
-        margin:10
+        margin:10,
+        padding:7,
+        justifyContent:'space-around',
+    },
+    text:{
+        color:"white",
+        fontSize:18
     }
 })
