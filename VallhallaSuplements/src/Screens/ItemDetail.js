@@ -24,20 +24,20 @@ const ItemDetail = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <View>
-          <Image
-            source={{uri: product.image}}
-          />
-          <View>
-            <Text>{product.title}</Text>
-          </View>
-          <View>
-            <Text>$ {product.price}</Text>
-            <Pressable onPress={onAddCart}>
-              <Text>Agregar al carrito</Text>
-            </Pressable>
-          </View>
-        </View>
+      
+      <Image
+        style={styles.image}
+        source={{uri:`../../assets/Images/${product.image}`}}
+        resizeMode='cover'
+      />
+      <Text>{product.title}</Text>
+    
+      <Text>$ {product.price}</Text>
+      
+      <Pressable onPress={onAddCart}>
+        <Text>Agregar al carrito</Text>
+      </Pressable>
+          
     </View>
   )
 }
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   image:{
-    width:"100%",
+    width:300,
     height:300
   }
 })

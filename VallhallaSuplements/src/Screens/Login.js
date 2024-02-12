@@ -6,6 +6,7 @@ import { useLoginMutation } from '../Services/authService'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../Features/Auth/authSlice'
+import { insertSession } from '../Database'
 
 const Login = ({navigation}) => {
   
@@ -22,7 +23,7 @@ const Login = ({navigation}) => {
     }
 
     useEffect(()=>{
-        if(isSuccess) {dispatch(setUser(data))}
+        if(isSuccess) {dispatch(setUser(data)), insertSession(data)}
     },[data,isError,isSuccess])
 
     return (
