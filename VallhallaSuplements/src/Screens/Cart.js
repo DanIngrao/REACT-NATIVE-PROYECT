@@ -6,26 +6,22 @@ import { colors } from '../Global/colors'
 
 const Cart = () => {
 
-  const cartItems = useSelector(state => state.cartReducer.value.items)
-  const total= useSelector(state => state.cartReducer.value.total)
-  const [triggerPost] = usePostOrdersMutation()
-  
-  const confirmCart = ()=>{
-    triggerPost({total, cartItems, user: 'loggedUser'})
-  }
+    const localId = useSelector(state => state.authReducer.value.localId)
+    const cart = useSelector(state => state.cartReducer.value)
+    const [triggerPostOrder,{data,isSuccess,isError,error}] = usePostOrdersMutation()  
 
   return (
     <View style={styles.container}>
         <FlatList
-            data={cartItems}
-            keyExtractor={cartItem => cartItem.id}
+            data={cart.items}
+            keyExtractor={item => item.id}
             renderItem={({item})=> <CartItem item={item}/>}
         />
         <View style={styles.confirmContainer}>
-            <Pressable style={styles.button} onPress={()=>confirmCart()}>
+            <Pressable style={styles.button} onPress={()=> triggerPostOrder({localId,order:cart})}>
                 <Text style={styles.text}>Confirmar</Text>
             </Pressable>
-            <Text style={styles.text}>Total: $ {total} </Text>
+            <Text style={styles.text}>Total: $ {cart.total} </Text>
         </View>
     </View>
    

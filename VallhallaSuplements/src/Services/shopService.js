@@ -4,6 +4,7 @@ import {base_url} from '../Firebase/database';
 export const shopApi = createApi({
     reducerPath: "shopApi",
     baseQuery: fetchBaseQuery({baseUrl: base_url}),
+    tagTypes:["image","order"],
     endpoints: (builder) => ({
         getProducts: builder.query({
             query:()=> "products.json"
@@ -15,11 +16,12 @@ export const shopApi = createApi({
             query:(category)=>`products.json?orderBy="category"&equalTo="${category}"`
         }),
         postOrders: builder.mutation({
-            query: (order) => ({
-              url:"orders.json",
+            query: ({localId,order}) => ({
+              url:`orders/${localId}.json`,
               method:"POST",
               body:order
-            })
+            }),
+            invalidatesTags:["order"]
         }),
         getOrders: builder.query({
             query: (localId) => `orders/${localId}.json`,

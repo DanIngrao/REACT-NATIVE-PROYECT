@@ -11,43 +11,21 @@ export const cartSlice = createSlice({
         }
     },
     reducers:{
-        addItem:(state,action) => {
-            const productRepeated = state.value.items.find(
-                (item) => item.id === action.payload.id
-            );
-            if(productRepeated){
-                const itemsUpdated = state.value.items.map((item)=>{
-                    if(item.id === action.payload.id){
-                        item.quantity += action.payload.quantity;
-                        return item;
-                    }
-                    return item;
-                });
-                const total = itemsUpdated.reduce(
-                    (acc,currentItem) => 
-                        ( acc += currentItem.price * currentItem.quantity),0
-                )
-                state.value = {
-                    ...state.value,
-                    items: itemsUpdated,
-                    total,
-                    updatedAt: new Date().toLocaleString()
-                }
-            }else{
-                state.value.items.push(action.payload);
-                const total = state.value.items.reduce((acc,currentItem)=>(acc+= currentItem.price*currentItem.quantity),0)
-                state.value = {
-                    ...state.value,
-                    total,
-                    updatedAt: new Date().toLocaleString()
-                }
-            }
+        addItem:(state,action)=>{
+          
+          const foundItem = state.value.items.find(item => item.id === action.payload.id)
+    
+          if(foundItem) foundItem.quantity++
+          else state.value.items.push({...action.payload,quantity:1})
+    
+          state.value.total = state.value.items.reduce((acc,item)=> acc + (item.price * item.quantity),0)
+          state.value.updateAt = new Date().toLocaleString()
         },
-        removeItem: (state,action) => {
-
+        removeItem:() =>{
+    
         }
-    }
-})
+      },
+    })
 
 export const {addItem, removeItem} = cartSlice.actions
 
