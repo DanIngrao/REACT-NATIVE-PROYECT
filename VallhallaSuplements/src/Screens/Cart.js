@@ -22,7 +22,7 @@ const Cart = () => {
             renderItem={({item})=> <CartItem item={item}/>}
         />
         <View style={styles.confirmContainer}>
-            <Pressable onPress={()=>confirmCart()}>
+            <Pressable style={styles.button} onPress={()=>confirmCart()}>
                 <Text style={styles.text}>Confirmar</Text>
             </Pressable>
             <Text style={styles.text}>Total: $ {total} </Text>
@@ -49,5 +49,8 @@ const styles = StyleSheet.create({
     text:{
         color:"white",
         fontFamily:"Josefin"
+    },
+    button:{
+        backgroundColor:colors.blue1
     }
 })

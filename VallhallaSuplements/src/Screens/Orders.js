@@ -8,7 +8,7 @@ import { colors } from '../Global/colors'
 
 const Orders = () => {
   const localId = useSelector(state => state.authReducer.value.localId)
-  const {data,isSuccess,isError,error,isLoading} = useGetOrdersQuery(localId)
+  const {data,isSuccess,isError,error} = useGetOrdersQuery(localId)
   const [info,setInfo] = useState(true)
   const [errorMessage,setErrorMessage] = useState("")
   const [loading , setLoading] = useState(true)
@@ -19,7 +19,7 @@ const Orders = () => {
     if(isError && error ) setErrorMessage(error.error)
   },[data,isSuccess,isError,error])
 
-  if(!info) return <View style={styles.container}><Text>no hay ordenes</Text></View>
+  if(!info) return <View style={styles.container}><Text>No hay ordenes</Text></View>
   if(errorMessage) return  <View style={styles.container}><Text>Error al cargar</Text></View>
   if(loading) return  <LoadingSpinner/>
 
