@@ -7,7 +7,8 @@ const OrderItem = ({order}) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-            <Text style={styles.text1}>{order.updateAt}</Text>
+            <Text style={styles.text1}>{order.user}</Text>
+            <Text style={styles.text2}>{order.updateAt}</Text>
             <Text style={styles.text2}>Total: ${order.total}</Text>
       </View>
       <Feather name="search" size={25} color="black"/>

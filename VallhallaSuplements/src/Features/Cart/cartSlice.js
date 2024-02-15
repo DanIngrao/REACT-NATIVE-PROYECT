@@ -4,7 +4,7 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState:{
         value:{
-            user: 'userLogged',
+            user: '',
             updateAt: Date.now().toLocaleString(),
             total: null,
             items: []
@@ -25,11 +25,15 @@ export const cartSlice = createSlice({
           state.value.total = null
           state.value.items = []
         },
+        userCart:(state,action)=>{
+          state.value.user=`${action.payload}`
+        }
+        ,
         removeItem:(state,action) =>{
         }
       },
     })
 
-export const {addItem, removeItem, clearCart} = cartSlice.actions
+export const {addItem, removeItem, clearCart, userCart} = cartSlice.actions
 
 export default cartSlice.reducer

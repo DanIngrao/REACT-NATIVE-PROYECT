@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../Features/Auth/authSlice'
 import { insertSession } from '../Database'
+import { userCart } from '../Features/Cart/cartSlice'
 
 const Login = ({navigation}) => {
   
@@ -19,7 +20,8 @@ const Login = ({navigation}) => {
         triggerLogin({
             email,
             password
-        })
+        });
+        dispatch(userCart(email))
     }
 
     useEffect(()=>{
