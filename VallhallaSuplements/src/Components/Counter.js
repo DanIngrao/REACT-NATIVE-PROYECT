@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View,Button,TextInput } from 'react-native'
-import { useState } from 'react'
+import { StyleSheet, Text, View,Button} from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
-import { increment ,decrement,incrementByAmount } from '../Features/Counter/counterSlice'
+import { increment ,decrement } from '../Features/Counter/counterSlice'
 import { colors } from '../Global/colors'
 
 const Counter = () => {
     const count = useSelector((state)=> state.counterReducer.value)
-    const [amount,setAmount] = useState(0)
     const dispatch = useDispatch()
   
 
@@ -15,10 +13,6 @@ const Counter = () => {
             <Button title='+' onPress={()=> dispatch(increment())} />
             <Text>{count}</Text>
             <Button title='-' onPress={()=> dispatch(decrement())} />
-            <View style={styles.inputContainer}>
-                <TextInput style={styles.input} onChangeText={(t) => setAmount(parseInt(t))} />
-                <Button title='Add' onPress={()=>dispatch(incrementByAmount(amount))}/>
-            </View>
         </View>
   )
 }
@@ -33,7 +27,8 @@ const styles = StyleSheet.create({
         margin:15,
         padding: 5,
         borderRadius: 5,
-        backgroundColor: colors.grey
+        backgroundColor: colors.grey,
+        width:'50%'
       },
       inputContainer:{
         gap:10,

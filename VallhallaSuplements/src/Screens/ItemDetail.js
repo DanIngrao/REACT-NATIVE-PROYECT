@@ -2,14 +2,18 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import allProduct from "../Data/products.json"
 import { colors } from '../Global/colors'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../Features/Cart/cartSlice'
+import Counter from '../Components/Counter'
+
 
 const ItemDetail = ({route}) => {
 
   const dispatch = useDispatch()
 
-  const onAddCart = ()=>{dispatch(addItem({...product, quantity: 1}))}
+  const count = useSelector((state)=> state.counterReducer.value)
+
+  const onAddCart = ()=>{dispatch(addItem({...product, quantity: count}))}
 
   const {id} = route.params
 
@@ -33,6 +37,8 @@ const ItemDetail = ({route}) => {
       <Text>{product.title}</Text>
     
       <Text>$ {product.price}</Text>
+
+      <Counter/>
       
       <Pressable onPress={onAddCart} style={styles.buyButton}>
         <Text style={styles.buyText}>Agregar al carrito</Text>
@@ -57,13 +63,15 @@ const styles = StyleSheet.create({
     height:300
   },
   buyText:{
-    color:"white"
+    color:"white",
+    textAlign:'center'
    },
    buyButton:{
     backgroundColor: colors.blue1,
     paddingVertical:5,
     paddingHorizontal:10,
     borderRadius:5,
-    marginTop:10
+    marginTop:10,
+    width:'50%',
    },
 })
