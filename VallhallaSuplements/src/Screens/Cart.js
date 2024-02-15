@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View,FlatList, Pressable } from 'react-native'
 import CartItem from '../Components/CartItem'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { usePostOrdersMutation } from '../Services/shopService'
 import { colors } from '../Global/colors'
+import { clearCart } from '../Features/Cart/cartSlice'
 
 const Cart = () => {
 
+    const dispatch = useDispatch()
     const localId = useSelector(state => state.authReducer.value.localId)
     const cart = useSelector(state => state.cartReducer.value)
     const [triggerPostOrder,{data,isSuccess,isError,error}] = usePostOrdersMutation()  
@@ -18,7 +20,7 @@ const Cart = () => {
             renderItem={({item})=> <CartItem item={item}/>}
         />
         <View style={styles.confirmContainer}>
-            <Pressable style={styles.button} onPress={()=> triggerPostOrder({localId,order:cart})}>
+            <Pressable style={styles.button} onPress={()=> {triggerPostOrder({localId,order:cart}); dispatch(clearCart())}}>
                 <Text style={styles.text}>Confirmar</Text>
             </Pressable>
             <Text style={styles.text}>Total: $ {cart.total} </Text>
