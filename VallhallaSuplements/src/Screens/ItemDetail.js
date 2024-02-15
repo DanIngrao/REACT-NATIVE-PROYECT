@@ -34,8 +34,8 @@ const ItemDetail = ({route}) => {
     
       <Text>$ {product.price}</Text>
       
-      <Pressable onPress={onAddCart}>
-        <Text>Agregar al carrito</Text>
+      <Pressable onPress={onAddCart} style={styles.buyButton}>
+        <Text style={styles.buyText}>Agregar al carrito</Text>
       </Pressable>
           
     </View>
@@ -49,9 +49,21 @@ const styles = StyleSheet.create({
     backgroundColor: colors.cream,
     flex: 1,
     width: '100%',
+    justifyContent:"start",
+    alignItems:"center"
   },
   image:{
     width:300,
     height:300
-  }
+  },
+  buyText:{
+    color:"white"
+   },
+   buyButton:{
+    backgroundColor: colors.blue1,
+    paddingVertical:5,
+    paddingHorizontal:10,
+    borderRadius:5,
+    marginTop:10
+   },
 })

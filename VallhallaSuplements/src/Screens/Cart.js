@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
         fontFamily:"Josefin"
     },
     button:{
-        backgroundColor:colors.blue1
+        backgroundColor:colors.blue1,
+        paddingVertical:5,
+        paddingHorizontal:10,
+        borderRadius:5
     }
 })
