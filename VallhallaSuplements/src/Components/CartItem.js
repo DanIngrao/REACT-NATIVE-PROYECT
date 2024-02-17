@@ -8,14 +8,14 @@ const CartItem = ({item}) => {
     
     const dispatch = useDispatch()
 
-    const deleteCartItem = ()=>{dispatch(removeItem({item}))}
+    const deleteCartItem = ()=>{dispatch(removeItem(item))}
 
     return (
         <View style={styles.container}>
             <View style={styles.textContainer}>
                 <Text style={styles.text1}>{item.title}</Text>
-                <Text  style={styles.text2}>{item.category}</Text>
-                <Text  style={styles.text2}>Cantidad: {item.quantity} Precio $ {item.price}</Text>
+                <Text style={styles.text2}>{item.category}</Text>
+                <Text style={styles.text2}>Cantidad: {item.quantity} Precio $ {item.price}</Text>
             </View>
             <Pressable onPress={deleteCartItem}>
                 <Entypo name='trash' size={25} color="red"/>

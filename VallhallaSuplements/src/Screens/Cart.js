@@ -23,6 +23,9 @@ const Cart = () => {
             <Pressable style={styles.button} onPress={()=> {triggerPostOrder({localId,order:cart}); dispatch(clearCart())}}>
                 <Text style={styles.text}>Confirmar</Text>
             </Pressable>
+            <Pressable style={styles.button2} onPress={()=> {dispatch(clearCart())}}>
+                <Text style={styles.text}>Limpiar carrito</Text>
+            </Pressable>
             <Text style={styles.text}>Total: $ {cart.total} </Text>
         </View>
     </View>
@@ -50,6 +53,12 @@ const styles = StyleSheet.create({
     },
     button:{
         backgroundColor:colors.blue1,
+        paddingVertical:5,
+        paddingHorizontal:10,
+        borderRadius:5
+    },
+    button2:{
+        backgroundColor:'red',
         paddingVertical:5,
         paddingHorizontal:10,
         borderRadius:5
